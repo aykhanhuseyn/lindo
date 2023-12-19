@@ -1,39 +1,54 @@
 {
-  "expo": {
-    "name": "lindo",
-    "slug": "lindo",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
-    "plugins": [
-      "expo-router"
-    ],
-    "experiments": {
-      "typedRoutes": true
-    }
-  }
+	"expo": {
+		"name": "lindo",
+		"slug": "lindo",
+		"version": "1.0.0",
+		"orientation": "portrait",
+		"icon": "./assets/images/icon.png",
+		"scheme": "lindo",
+		"userInterfaceStyle": "automatic",
+
+		"assetBundlePatterns": ["**/*"],
+		"ios": {
+			"supportsTablet": true,
+			"userInterfaceStyle": "automatic",
+			"splash": {
+				"image": "./assets/images/splash-light.png",
+				"resizeMode": "cover",
+				"backgroundColor": "#F2F2F2",
+				"dark": {
+					"image": "./assets/images/splash-dark.png",
+					"resizeMode": "cover",
+					"backgroundColor": "#002A37"
+				}
+			}
+		},
+		"android": {
+			"adaptiveIcon": {
+				"foregroundImage": "./assets/images/adaptive-icon.png",
+				"backgroundColor": "#FFFFFF"
+			},
+			"userInterfaceStyle": "automatic",
+			"splash": {
+				"image": "./assets/images/splash-light.png",
+				"resizeMode": "cover",
+				"backgroundColor": "#F2F2F2",
+				"dark": {
+					"image": "./assets/images/splash-dark.png",
+					"resizeMode": "cover",
+					"backgroundColor": "#002A37"
+				}
+			}
+		},
+		"web": {
+			"bundler": "metro",
+			"output": "static",
+			"favicon": "./assets/images/favicon.ico"
+		},
+		"plugins": ["expo-router"],
+		"experiments": {
+			"typedRoutes": true
+		},
+		"owner": "Aniverse"
+	}
 }
