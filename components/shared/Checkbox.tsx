@@ -36,7 +36,10 @@ export const Checkbox: FC<CheckboxProps> = ({
 					<View style={[styles.checkboxBox, { borderColor: error ? errorColor : border }]}>
 						{checked && (
 							<View
-								style={[styles.checkboxCheck, { backgroundColor: error ? errorColor : border }]}
+								style={[
+									styles.checkboxCheck,
+									{ backgroundColor: error ? errorColor : textSecondary }
+								]}
 							/>
 						)}
 					</View>
@@ -68,30 +71,31 @@ export const Checkbox: FC<CheckboxProps> = ({
 const styles = StyleSheet.create({
 	wrapper: {},
 	checkboxWrapper: {
-		backgroundColor: '#F5F5F5',
 		position: 'relative',
-		borderRadius: 32,
-		padding: 12
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	checkboxBox: {
 		width: 20,
 		height: 20,
+		padding: 2,
 		borderRadius: 4,
 		borderWidth: 1,
+		justifyContent: 'center',
+		alignItems: 'center',
 		borderColor: Color.cyan[200],
 		position: 'relative'
 	},
 	checkboxCheck: {
 		position: 'absolute',
-		inset: 2,
-		width: 16,
-		height: 16,
-		backgroundColor: Color.cyan[200],
-		borderRadius: 6
+		width: '100%',
+		height: '100%',
+		backgroundColor: Color.cyan[800],
+		borderRadius: 8
 	},
 	label: {
 		fontSize: 12,
-		marginBottom: 8,
 		marginLeft: 12
 	},
 	helper: {

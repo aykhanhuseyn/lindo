@@ -32,10 +32,7 @@ export const LoginForm = () => {
 						error={errors.password}
 					/>
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-						<Checkbox
-							label="Hesabı xatırla me"
-							onChange={value => setFieldValue('remember', value)}
-						/>
+						<Checkbox label="Hesabı xatırla" onChange={value => setFieldValue('remember', value)} />
 						<Link href="/(auth)/register">
 							<Text>Hesabı unutmusunuz?</Text>
 						</Link>

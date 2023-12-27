@@ -40,6 +40,7 @@ export const Input: FC<InputProps> = ({
 					error ? { borderWidth: 1, borderColor: errorColor } : { borderWidth: 0 }
 				]}>
 				<TextInput
+					autoCapitalize="none"
 					style={[
 						styles.input,
 						style,
