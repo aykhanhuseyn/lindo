@@ -1,29 +1,29 @@
-import React from 'react';
-import type { FC } from 'react';
-import { StyleSheet, Animated } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import type { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import { Color } from '@lindo/constants';
-import { View } from '../shared';
-import { TabButton } from './TabButton';
+import { Color } from '@lindo/constants'
+import type { BottomTabBarProps } from '@react-navigation/bottom-tabs'
+import React from 'react'
+import type { FC } from 'react'
+import { StyleSheet } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-export const TabBar: FC<BottomTabBarProps> = (props) => {
-	const insets = useSafeAreaInsets();
-	const b = insets.bottom ?? 0;
-	const h = 8;
+import { TabButton } from './TabButton'
+import { View } from '../shared'
+
+export const TabBar: FC<BottomTabBarProps> = props => {
+	const insets = useSafeAreaInsets()
+	const b = insets.bottom ?? 0
+	const h = 8
 
 	return (
 		<View
 			style={[styles.tabBar, { bottom: b - 10, left: h, right: h }]}
-			lightColor='red'
-			darkColor='blue'
-		>
+			lightColor="red"
+			darkColor="blue">
 			{props.state.routes.map((route, index) => (
-				<TabButton {...{ route, index, ...props }} />
+				<TabButton key={route.key} {...{ route, index, ...props }} />
 			))}
 		</View>
-	);
-};
+	)
+}
 
 const styles = StyleSheet.create({
 	tabBar: {
@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
 		paddingHorizontal: 24,
 		justifyContent: 'space-around',
 		backgroundColor: Color.cyan[800],
-		borderRadius: 32,
-	},
-});
+		borderRadius: 32
+	}
+})
 
-export default TabBar;
+export default TabBar

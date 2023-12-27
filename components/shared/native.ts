@@ -4,8 +4,8 @@ export {
 	Pressable,
 	FlatList,
 	ScrollView,
-	RefreshControl,
-} from 'react-native';
+	RefreshControl
+} from 'react-native'
 
 export type {
 	ImageProps,
@@ -14,5 +14,5 @@ export type {
 	PressableProps,
 	FlatListProps,
 	ScrollViewProps,
-	RefreshControlProps,
-} from 'react-native';
+	RefreshControlProps
+} from 'react-native'

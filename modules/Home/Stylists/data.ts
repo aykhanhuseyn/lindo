@@ -1,4 +1,4 @@
-import type { StylistView } from '@lindo/types';
+import type { StylistView } from '@lindo/types'
 
 export const stylists: StylistView[] = [
 	{
@@ -9,7 +9,7 @@ export const stylists: StylistView[] = [
 		entityName: 'Sara Beauty Salon',
 		profession: 'Hairdresser',
 		rating: 4.5,
-		ratingCount: 100,
+		ratingCount: 100
 	},
 	{
 		id: 2,
@@ -19,7 +19,7 @@ export const stylists: StylistView[] = [
 		entityName: 'Face Studio Centre',
 		profession: 'Kosmetoloq',
 		rating: 4.5,
-		ratingCount: 100,
+		ratingCount: 100
 	},
 	{
 		id: 3,
@@ -29,6 +29,6 @@ export const stylists: StylistView[] = [
 		entityName: 'Afrodita Salon Baku',
 		profession: 'saç stilisti',
 		rating: 4.5,
-		ratingCount: 50,
-	},
-];
+		ratingCount: 50
+	}
+]

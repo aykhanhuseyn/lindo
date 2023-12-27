@@ -1,4 +1,4 @@
-import type { BeautySalonView } from '@lindo/types';
+import type { BeautySalonView } from '@lindo/types'
 
 export const salons: BeautySalonView[] = [
 	{
@@ -12,7 +12,7 @@ export const salons: BeautySalonView[] = [
 		distance: 1,
 		distanceUnit: 'km',
 		image:
-			'https://lh5.googleusercontent.com/p/AF1QipPNPrwzbQqJyWf14KzkRZy-dZVowrmRlzfEn2sk=w426-h240-k-no',
+			'https://lh5.googleusercontent.com/p/AF1QipPNPrwzbQqJyWf14KzkRZy-dZVowrmRlzfEn2sk=w426-h240-k-no'
 	},
 	{
 		id: 2,
@@ -25,7 +25,7 @@ export const salons: BeautySalonView[] = [
 		distance: 1,
 		distanceUnit: 'km',
 		image:
-			'https://lh5.googleusercontent.com/p/AF1QipO-0D7IwKyhyzm6dudSWr_MjftDxta6W5mgYKLX=w408-h511-k-no',
+			'https://lh5.googleusercontent.com/p/AF1QipO-0D7IwKyhyzm6dudSWr_MjftDxta6W5mgYKLX=w408-h511-k-no'
 	},
 	{
 		id: 3,
@@ -38,7 +38,7 @@ export const salons: BeautySalonView[] = [
 		distance: 1,
 		distanceUnit: 'km',
 		image:
-			'https://lh5.googleusercontent.com/p/AF1QipMFUeaONkEinhje1FEfdO3MqT3as9cP3BRm3t7D=w408-h258-k-no',
+			'https://lh5.googleusercontent.com/p/AF1QipMFUeaONkEinhje1FEfdO3MqT3as9cP3BRm3t7D=w408-h258-k-no'
 	},
 	{
 		id: 4,
@@ -51,7 +51,7 @@ export const salons: BeautySalonView[] = [
 		distance: 1,
 		distanceUnit: 'km',
 		image:
-			'https://lh5.googleusercontent.com/p/AF1QipO35gNLpRUgYEJTJf-5yMKzsYhf7-S-Nl-eWecu=w430-h240-k-no',
+			'https://lh5.googleusercontent.com/p/AF1QipO35gNLpRUgYEJTJf-5yMKzsYhf7-S-Nl-eWecu=w430-h240-k-no'
 	},
 	{
 		id: 5,
@@ -64,6 +64,6 @@ export const salons: BeautySalonView[] = [
 		distance: 1,
 		distanceUnit: 'km',
 		image:
-			'https://lh5.googleusercontent.com/p/AF1QipO-0D7IwKyhyzm6dudSWr_MjftDxta6W5mgYKLX=w408-h511-k-no',
-	},
-];
+			'https://lh5.googleusercontent.com/p/AF1QipO-0D7IwKyhyzm6dudSWr_MjftDxta6W5mgYKLX=w408-h511-k-no'
+	}
+]

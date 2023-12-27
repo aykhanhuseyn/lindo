@@ -1,4 +1,4 @@
-import type { Theme } from '@react-navigation/native';
+import type { Theme } from '@react-navigation/native'
 
 export const Color = {
 	black: {
@@ -11,7 +11,7 @@ export const Color = {
 		'600': '#000000',
 		'700': '#000000',
 		'800': '#000000',
-		'900': '#000000',
+		'900': '#000000'
 	},
 	white: {
 		'50': '#ffffff', // pure white
@@ -23,7 +23,7 @@ export const Color = {
 		'600': 'rgba(255, 255, 255, 0.87)',
 		'700': 'rgba(255, 255, 255, 0.67)',
 		'800': 'rgba(255, 255, 255, 0.37)',
-		'900': '#999999', // very light gray (almost white)
+		'900': '#999999' // very light gray (almost white)
 	},
 	cyan: {
 		'50': '#BACDD8',
@@ -35,22 +35,35 @@ export const Color = {
 		'600': '#1C4F61',
 		'700': '#0D3C4B',
 		'800': '#002A37',
-		'900': '#001821',
+		'900': '#001821'
 	},
-};
+	red: {
+		'50': '#FF6262',
+		'100': '#FF4E4E',
+		'200': '#FF3B3B',
+		'300': '#FF2727',
+		'400': '#FF1414',
+		'500': '#FF0000',
+		'600': '#EB0000',
+		'700': '#D80000',
+		'800': '#C40000',
+		'900': '#B10000'
+	}
+}
 
 export type LindoTheme = {
-	title: string;
-	titleSecondary: string;
-	text: string;
-	textSecondary: string;
-	textTertiary: string;
-	background: string;
-	backgroundSecondary: string;
-	backgroundTertiary: string;
-	border: string;
-	separator: string;
-} & Theme['colors'];
+	title: string
+	titleSecondary: string
+	text: string
+	textSecondary: string
+	textTertiary: string
+	background: string
+	backgroundSecondary: string
+	backgroundTertiary: string
+	border: string
+	separator: string
+	error: string
+} & Theme['colors']
 
 export const ThemeColor: Record<'light' | 'dark', LindoTheme> = {
 	light: {
@@ -67,6 +80,7 @@ export const ThemeColor: Record<'light' | 'dark', LindoTheme> = {
 		card: Color.white[600],
 		notification: Color.cyan[500],
 		primary: Color.cyan[800],
+		error: Color.red[600]
 	},
 	dark: {
 		title: Color.white[600],
@@ -82,16 +96,17 @@ export const ThemeColor: Record<'light' | 'dark', LindoTheme> = {
 		card: Color.black[400],
 		notification: Color.cyan[400],
 		primary: Color.cyan[700],
-	},
-};
+		error: Color.red[400]
+	}
+}
 
 export const theme: Record<'light' | 'dark', Theme> = {
 	light: {
 		dark: false,
-		colors: ThemeColor.light,
+		colors: ThemeColor.light
 	},
 	dark: {
 		dark: true,
-		colors: ThemeColor.dark,
-	},
-};
+		colors: ThemeColor.dark
+	}
+}

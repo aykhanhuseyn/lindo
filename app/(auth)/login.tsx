@@ -1,35 +1,64 @@
-import { StyleSheet } from 'react-native';
-import { EditScreenInfo, Text, View } from '@lindo/components';
+import { Text, View, FlatList, Container } from '@lindo/components'
+import { LoginForm } from '@lindo/modules/Auth'
+import { useCallback, useState } from 'react'
+import { RefreshControl, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
 
 export default function Login() {
+	const [refreshing, setRefreshing] = useState(false)
+
+	const onRefresh = useCallback(() => {
+		setRefreshing(true)
+		setTimeout(() => {
+			setRefreshing(false)
+		}, 2000)
+	}, [])
+
 	return (
-		<View style={styles.container}>
-			<Text color='title' style={styles.title}>
-				Lindaya xoş gəldin!
-			</Text>
-			<View
-				style={styles.separator}
-				lightColor='#eee'
-				darkColor='rgba(255,255,255,0.1)'
+		<Container withHeader>
+			<FlatList
+				refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+				data={[
+					() => (
+						<View style={styles.container}>
+							<View style={styles.wrapper}>
+								<Text color="title" style={styles.title}>
+									Lindaya xoş gəldin!
+								</Text>
+								<LoginForm />
+							</View>
+						</View>
+					)
+				]}
+				renderItem={({ item: Component, index }) => <Component key={index} />}
+				style={{ paddingBottom: 20, height: '100%' }}
+				keyboardDismissMode="interactive"
+				keyExtractor={item => item.name}
+				contentContainerStyle={{ gap: 40 }}
+				showsVerticalScrollIndicator={false}
 			/>
-			<EditScreenInfo path='app/(auth)/login.tsx' />
-		</View>
-	);
+		</Container>
+	)
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		height: '100%',
 		alignItems: 'center',
-		justifyContent: 'center',
+		justifyContent: 'center'
+	},
+	wrapper: {
+		width: '100%',
+		height: '100%',
+		gap: 30
 	},
 	title: {
 		fontSize: 32,
-		fontWeight: 'bold',
+		fontWeight: 'bold'
 	},
 	separator: {
 		marginVertical: 30,
 		height: 1,
-		width: '80%',
-	},
-});
+		width: '80%'
+	}
+})

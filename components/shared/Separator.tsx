@@ -1,17 +1,18 @@
-import type { FC } from 'react';
-import { type ColorValue, type DimensionValue } from 'react-native';
-import { View, type ViewProps } from './View';
+import type { FC } from 'react'
+import { type ColorValue, type DimensionValue } from 'react-native'
+
+import { View, type ViewProps } from './View'
 
 interface SeparatorProps extends ViewProps {
-	h?: DimensionValue;
-	w?: DimensionValue;
-	mV?: DimensionValue;
-	mT?: DimensionValue;
-	mB?: DimensionValue;
-	mH?: DimensionValue;
-	mR?: DimensionValue;
-	mL?: DimensionValue;
-	bg?: ColorValue;
+	h?: DimensionValue
+	w?: DimensionValue
+	mV?: DimensionValue
+	mT?: DimensionValue
+	mB?: DimensionValue
+	mH?: DimensionValue
+	mR?: DimensionValue
+	mL?: DimensionValue
+	bg?: ColorValue
 }
 
 export const Separator: FC<SeparatorProps> = ({
@@ -27,12 +28,12 @@ export const Separator: FC<SeparatorProps> = ({
 	style,
 	...props
 }) => {
-	const marginTop = mT ?? mV;
-	const marginBottom = mB ?? mV;
-	const marginRight = mR ?? mH;
-	const marginLeft = mL ?? mH;
-	const height = h ?? 1;
-	const width = w ?? 'auto';
+	const marginTop = mT ?? mV
+	const marginBottom = mB ?? mV
+	const marginRight = mR ?? mH
+	const marginLeft = mL ?? mH
+	const height = h ?? 1
+	const width = w ?? 'auto'
 
 	return (
 		<View
@@ -44,12 +45,12 @@ export const Separator: FC<SeparatorProps> = ({
 					marginLeft,
 					height,
 					width,
-					backgroundColor: bg,
+					backgroundColor: bg
 				},
-				style,
+				style
 			]}
-			color='separator'
+			color="separator"
 			{...props}
 		/>
-	);
-};
+	)
+}
