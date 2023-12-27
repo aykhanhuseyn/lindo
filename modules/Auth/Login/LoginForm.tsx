@@ -1,4 +1,5 @@
-import { Input, Button, View } from '@lindo/components'
+import { Input, Button, View, Checkbox, Text } from '@lindo/components'
+import { Link } from 'expo-router'
 import { Formik } from 'formik'
 import { StyleSheet } from 'react-native'
 
@@ -10,7 +11,7 @@ export const LoginForm = () => {
 			initialValues={initialValues}
 			onSubmit={console.log}
 			validationSchema={validationSchema}>
-			{({ handleChange, handleBlur, handleSubmit, values, errors, isValid }) => (
+			{({ handleChange, setFieldValue, handleBlur, handleSubmit, values, errors, isValid }) => (
 				<View style={styles.container}>
 					<Input
 						label="Email"
@@ -30,6 +31,15 @@ export const LoginForm = () => {
 						value={values.password}
 						error={errors.password}
 					/>
+					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+						<Checkbox
+							label="Hesabı xatırla me"
+							onChange={value => setFieldValue('remember', value)}
+						/>
+						<Link href="/(auth)/register">
+							<Text>Hesabı unutmusunuz?</Text>
+						</Link>
+					</View>
 					<Button title="Log in" onPress={() => handleSubmit()} isDisabled={!isValid} />
 				</View>
 			)}
