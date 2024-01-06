@@ -1,6 +1,5 @@
 import { Color } from '@lindo/constants'
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs'
-import React from 'react'
 import type { FC } from 'react'
 import { StyleSheet } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -35,7 +34,7 @@ const styles = StyleSheet.create({
 		paddingVertical: 8,
 		paddingHorizontal: 24,
 		justifyContent: 'space-around',
-		backgroundColor: Color.cyan[800],
+		backgroundColor: Color.daintree[950],
 		borderRadius: 32
 	}
 })

@@ -1,8 +1,8 @@
-import AntDesign from '@expo/vector-icons/AntDesign'
 import { TabBar } from '@lindo/components'
 import { ThemeColor } from '@lindo/constants'
+import { InformationCircle } from '@nandorojo/heroicons/24/outline'
 import { Link, Tabs } from 'expo-router'
-import { Pressable, useColorScheme } from 'react-native'
+import { TouchableOpacity, useColorScheme } from 'react-native'
 
 export default function TabLayout() {
 	const colorScheme = useColorScheme() ?? 'light'
@@ -17,16 +17,9 @@ export default function TabLayout() {
 					title: 'Appointments',
 					headerRight: () => (
 						<Link href="/modal" asChild>
-							<Pressable>
-								{({ pressed }) => (
-									<AntDesign
-										name="infocirlce"
-										size={24}
-										color={colors.text}
-										style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-									/>
-								)}
-							</Pressable>
+							<TouchableOpacity>
+								<InformationCircle color={colors.text} style={{ marginRight: 15 }} />
+							</TouchableOpacity>
 						</Link>
 					)
 				}}

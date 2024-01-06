@@ -1,4 +1,10 @@
-import AntDesign from '@expo/vector-icons/AntDesign'
+import {
+	SpaceGrotesk_300Light,
+	SpaceGrotesk_400Regular,
+	SpaceGrotesk_500Medium,
+	SpaceGrotesk_600SemiBold,
+	SpaceGrotesk_700Bold
+} from '@expo-google-fonts/space-grotesk'
 import { theme } from '@lindo/constants'
 import { ThemeProvider } from '@react-navigation/native'
 import { useFonts } from 'expo-font'
@@ -14,10 +20,11 @@ SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
 	const [loaded, error] = useFonts({
-		SFProDisplay: require('../assets/fonts/SF-Pro-Display-Regular.otf'),
-		SFProText: require('../assets/fonts/SF-Pro-Text-Regular.otf'),
-		SFProMono: require('../assets/fonts/SF-Mono-Regular.otf'),
-		...AntDesign.font
+		SpaceGrotesk_300Light,
+		SpaceGrotesk_400Regular,
+		SpaceGrotesk_500Medium,
+		SpaceGrotesk_600SemiBold,
+		SpaceGrotesk_700Bold
 	})
 
 	useEffect(() => {
@@ -34,11 +41,12 @@ export default function RootLayout() {
 		return null
 	}
 
-	return <RootLayoutNav />
+	return <RootNavigation />
 }
 
-function RootLayoutNav() {
+function RootNavigation() {
 	const colorScheme = useColorScheme()
+	// const background = theme[colorScheme ?? 'light'].colors.background
 
 	return (
 		<ThemeProvider value={colorScheme === 'dark' ? theme.dark : theme.light}>

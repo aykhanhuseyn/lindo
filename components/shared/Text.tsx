@@ -11,9 +11,9 @@ export interface TextProps extends ThemeProps, DefaultTextProps {
 }
 
 const modeToFontFamily = {
-	display: 'SFProDisplay',
-	text: 'SFProText',
-	mono: 'SFProMono'
+	display: 'SpaceGrotesk_500Medium',
+	text: 'SpaceGrotesk_400Regular',
+	mono: 'SpaceGrotesk_300Light'
 } as const
 
 const modeToStyles: Record<TextMode, DefaultTextProps['style']> = {
@@ -45,7 +45,8 @@ const modeToStyles: Record<TextMode, DefaultTextProps['style']> = {
 	mono: {
 		fontSize: 16,
 		fontWeight: '400',
-		fontFamily: modeToFontFamily.mono
+		fontFamily: modeToFontFamily.mono,
+		fontStyle: 'italic'
 	}
 }
 

@@ -1,6 +1,13 @@
-import AntDesign from '@expo/vector-icons/AntDesign'
 import { Color } from '@lindo/constants'
-import { useEffect, forwardRef, type FC, type ReactElement, type ForwardedRef } from 'react'
+import * as HeroIcon from '@nandorojo/heroicons/24/outline'
+import {
+	useEffect,
+	forwardRef,
+	type FC,
+	type ReactElement,
+	type ForwardedRef,
+	type CSSProperties
+} from 'react'
 import {
 	Animated,
 	Easing,
@@ -83,22 +90,22 @@ export const Button = forwardRef(
 							isIconButton && styles.iconButtonSize,
 							!isIconButton && mode !== 'link' && styles.buttonSize,
 							{
-								backgroundColor: mode === 'filled' ? Color.cyan[800] : 'transparent',
-								borderColor: mode === 'outline' ? Color.cyan[800] : 'transparent',
+								backgroundColor: mode === 'filled' ? Color.daintree[950] : 'transparent',
+								borderColor: mode === 'outline' ? Color.daintree[950] : 'transparent',
 								borderWidth: mode === 'outline' ? 1 : 0
 							},
 							mode === 'link' && styles.linkButton,
 							isDisabled && {
-								backgroundColor: mode === 'filled' ? Color.cyan[700] : 'transparent',
-								borderColor: mode === 'outline' ? Color.cyan[700] : 'transparent'
+								backgroundColor: mode === 'filled' ? Color.daintree[900] : 'transparent',
+								borderColor: mode === 'outline' ? Color.daintree[900] : 'transparent'
 							},
 							pressed && {
-								backgroundColor: mode === 'filled' ? Color.cyan[700] : 'transparent',
-								borderColor: mode === 'outline' ? Color.cyan[700] : 'transparent'
+								backgroundColor: mode === 'filled' ? Color.daintree[900] : 'transparent',
+								borderColor: mode === 'outline' ? Color.daintree[900] : 'transparent'
 							},
 							hovered && {
-								backgroundColor: mode === 'filled' ? Color.cyan[700] : 'transparent',
-								borderColor: mode === 'outline' ? Color.cyan[700] : 'transparent'
+								backgroundColor: mode === 'filled' ? Color.daintree[900] : 'transparent',
+								borderColor: mode === 'outline' ? Color.daintree[900] : 'transparent'
 							},
 							style
 						]}>
@@ -107,11 +114,11 @@ export const Button = forwardRef(
 								<Text
 									style={[
 										{
-											color: mode === 'filled' ? Color.white[400] : Color.cyan[800]
+											color: mode === 'filled' ? Color.white[50] : Color.daintree[950]
 										},
 										mode === 'link' && styles.linkButtonText,
 										isDisabled && {
-											color: mode === 'filled' ? Color.white[100] : Color.cyan[200]
+											color: mode === 'filled' ? Color.white[100] : Color.daintree[800]
 										},
 										textStyle
 									]}>
@@ -122,17 +129,15 @@ export const Button = forwardRef(
 							)
 						) : (
 							<Animated.View style={isLoading && { transform: [{ rotate: spin }] }}>
-								<AntDesign
-									name="loading1"
-									style={[
-										{
-											color: mode === 'filled' ? Color.white[100] : Color.cyan[800]
-										},
-										isDisabled && {
-											color: mode === 'filled' ? Color.white[100] : Color.cyan[200]
-										},
-										textStyle
-									]}
+								<HeroIcon.ArrowPath
+									color={
+										mode === 'filled'
+											? Color.white[100]
+											: isDisabled
+												? Color.daintree[800]
+												: Color.daintree[950]
+									}
+									style={textStyle}
 								/>
 							</Animated.View>
 						)}
@@ -144,14 +149,13 @@ export const Button = forwardRef(
 )
 
 export type IconButtonProps = {
-	name: keyof typeof AntDesign.glyphMap
+	name: keyof typeof HeroIcon
 	size?: number
 } & Pick<ButtonProps, 'mode' | 'onPress' | 'block' | 'isDisabled' | 'style'>
 
 export const IconButton: FC<IconButtonProps> = ({ name, mode = 'ghost', size = 24, ...props }) => {
-	return (
-		<Button title={<AntDesign name={name} size={size} color="black" />} mode={mode} {...props} />
-	)
+	const Icon = HeroIcon[name]
+	return <Button title={<Icon fontSize={size} color="black" />} mode={mode} {...props} />
 }
 
 const styles = StyleSheet.create({
@@ -173,13 +177,13 @@ const styles = StyleSheet.create({
 		paddingVertical: 4
 	},
 	linkButton: {
-		paddingHorizontal: 4,
-		paddingVertical: 2,
-		backgroundColor: Color.white[600],
+		paddingHorizontal: 6,
+		paddingVertical: 1,
+		backgroundColor: Color.white[100],
 		borderRadius: 12
 	},
 	linkButtonText: {
-		color: Color.cyan[800],
+		color: Color.daintree[950],
 		fontSize: 10,
 		fontWeight: '400'
 	}

@@ -1,5 +1,6 @@
 import { Color } from '@lindo/constants'
 import { useThemeColor } from '@lindo/hooks'
+import { Check } from '@nandorojo/heroicons/24/outline'
 import { useState, useEffect, type FC, type ReactNode } from 'react'
 import { View, Text, ViewProps, StyleSheet, TouchableOpacity } from 'react-native'
 
@@ -35,11 +36,11 @@ export const Checkbox: FC<CheckboxProps> = ({
 				<View style={styles.checkboxWrapper}>
 					<View style={[styles.checkboxBox, { borderColor: error ? errorColor : border }]}>
 						{checked && (
-							<View
-								style={[
-									styles.checkboxCheck,
-									{ backgroundColor: error ? errorColor : textSecondary }
-								]}
+							<Check
+								width={18}
+								height={18}
+								color={error ? errorColor : textSecondary}
+								style={styles.checkboxCheck}
 							/>
 						)}
 					</View>
@@ -84,14 +85,11 @@ const styles = StyleSheet.create({
 		borderWidth: 1,
 		justifyContent: 'center',
 		alignItems: 'center',
-		borderColor: Color.cyan[200],
+		borderColor: Color.daintree[800],
 		position: 'relative'
 	},
 	checkboxCheck: {
 		position: 'absolute',
-		width: '100%',
-		height: '100%',
-		backgroundColor: Color.cyan[800],
 		borderRadius: 8
 	},
 	label: {

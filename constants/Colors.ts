@@ -2,52 +2,69 @@ import type { Theme } from '@react-navigation/native'
 
 export const Color = {
 	black: {
-		'50': '#e0e0e0', // very light black (almost gray)
-		'100': 'rgba(46, 46, 46, 0.12)',
-		'200': 'rgba(0, 0, 0, 0.37)',
-		'300': 'rgba(0, 0, 0, 0.67)',
-		'400': 'rgba(0, 0, 0, 0.87)',
-		'500': 'rgba(0, 0, 0, 1)', // pure black
-		'600': '#000000',
-		'700': '#000000',
-		'800': '#000000',
-		'900': '#000000'
+		'50': '#f6f6f6',
+		'100': '#e7e7e7',
+		'200': '#d1d1d1',
+		'300': '#b0b0b0',
+		'400': '#888888',
+		'500': '#6d6d6d',
+		'600': '#5d5d5d',
+		'700': '#4f4f4f',
+		'800': '#454545',
+		'900': '#3d3d3d',
+		'950': '#000000'
 	},
 	white: {
-		'50': '#ffffff', // pure white
-		'100': 'rgba(255, 255, 255, 0.12)',
-		'200': '#ffffff',
-		'300': '#ffffff',
-		'400': '#ffffff',
-		'500': '#ffffff',
-		'600': 'rgba(255, 255, 255, 0.87)',
-		'700': 'rgba(255, 255, 255, 0.67)',
-		'800': 'rgba(255, 255, 255, 0.37)',
-		'900': '#999999' // very light gray (almost white)
+		'50': '#ffffff',
+		'100': '#efefef',
+		'200': '#dcdcdc',
+		'300': '#bdbdbd',
+		'400': '#989898',
+		'500': '#7c7c7c',
+		'600': '#656565',
+		'700': '#525252',
+		'800': '#464646',
+		'900': '#3d3d3d',
+		'950': '#292929'
 	},
-	cyan: {
-		'50': '#BACDD8',
-		'100': '#9BB6C0',
-		'200': '#7D9BA8',
-		'300': '#5C8292',
-		'400': '#457183',
-		'500': '#295E71',
-		'600': '#1C4F61',
-		'700': '#0D3C4B',
-		'800': '#002A37',
-		'900': '#001821'
+	daintree: {
+		'50': '#e9fffe',
+		'100': '#c9fffc',
+		'200': '#99fffd',
+		'300': '#54ffff',
+		'400': '#07f3ff',
+		'500': '#00d4ef',
+		'600': '#00a8c9',
+		'700': '#0086a1',
+		'800': '#086b82',
+		'900': '#0c586d',
+		'950': '#002a37'
+	},
+	green: {
+		'50': '#e7ffe4',
+		'100': '#c9ffc4',
+		'200': '#98ff90',
+		'300': '#56ff50',
+		'400': '#00ff00',
+		'500': '#00e606',
+		'600': '#00b809',
+		'700': '#008b07',
+		'800': '#076d0d',
+		'900': '#0b5c11',
+		'950': '#003406'
 	},
 	red: {
-		'50': '#FF6262',
-		'100': '#FF4E4E',
-		'200': '#FF3B3B',
-		'300': '#FF2727',
-		'400': '#FF1414',
-		'500': '#FF0000',
-		'600': '#EB0000',
-		'700': '#D80000',
-		'800': '#C40000',
-		'900': '#B10000'
+		'50': '#fff0f0',
+		'100': '#ffdddd',
+		'200': '#ffc0c0',
+		'300': '#ff9494',
+		'400': '#ff5757',
+		'500': '#ff2323',
+		'600': '#ff0000',
+		'700': '#d70000',
+		'800': '#b10303',
+		'900': '#920a0a',
+		'950': '#500000'
 	}
 }
 
@@ -67,35 +84,35 @@ export type LindoTheme = {
 
 export const ThemeColor: Record<'light' | 'dark', LindoTheme> = {
 	light: {
-		title: Color.black[500],
-		titleSecondary: Color.black[400],
-		text: Color.black[400],
-		textSecondary: Color.black[300],
-		textTertiary: Color.black[200],
-		background: Color.white[600],
-		backgroundSecondary: Color.white[700],
-		backgroundTertiary: Color.white[800],
+		title: Color.black[950],
+		titleSecondary: Color.black[900],
+		text: Color.black[900],
+		textSecondary: Color.black[800],
+		textTertiary: Color.black[700],
+		background: Color.white[50],
+		backgroundSecondary: Color.white[100],
+		backgroundTertiary: Color.white[200],
 		border: Color.black[100],
 		separator: Color.black[100],
 		card: Color.white[600],
-		notification: Color.cyan[500],
-		primary: Color.cyan[800],
-		error: Color.red[600]
+		notification: Color.daintree[800],
+		primary: Color.daintree[950],
+		error: Color.red[400]
 	},
 	dark: {
-		title: Color.white[600],
-		titleSecondary: Color.white[700],
-		text: Color.white[700],
-		textSecondary: Color.white[800],
-		textTertiary: Color.white[900],
-		background: Color.black[500],
-		backgroundSecondary: Color.black[400],
-		backgroundTertiary: Color.black[300],
+		title: Color.white[100],
+		titleSecondary: Color.white[200],
+		text: Color.white[200],
+		textSecondary: Color.white[300],
+		textTertiary: Color.white[400],
+		background: Color.black[900],
+		backgroundSecondary: Color.black[800],
+		backgroundTertiary: Color.black[700],
 		border: Color.white[800],
 		separator: Color.white[900],
 		card: Color.black[400],
-		notification: Color.cyan[400],
-		primary: Color.cyan[700],
+		notification: Color.daintree[800],
+		primary: Color.daintree[950],
 		error: Color.red[400]
 	}
 }

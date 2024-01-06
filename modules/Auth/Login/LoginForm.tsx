@@ -10,8 +10,21 @@ export const LoginForm = () => {
 		<Formik
 			initialValues={initialValues}
 			onSubmit={console.log}
-			validationSchema={validationSchema}>
-			{({ handleChange, setFieldValue, handleBlur, handleSubmit, values, errors, isValid }) => (
+			validationSchema={validationSchema}
+			validateOnBlur
+			validateOnChange
+			isInitialValid
+			validateOnMount={false}>
+			{({
+				handleChange,
+				setFieldValue,
+				handleBlur,
+				handleSubmit,
+				touched,
+				values,
+				errors,
+				isValid
+			}) => (
 				<View style={styles.container}>
 					<Input
 						label="Email"
@@ -20,7 +33,7 @@ export const LoginForm = () => {
 						onChangeText={handleChange('email')}
 						onBlur={handleBlur('email')}
 						value={values.email}
-						error={errors.email}
+						error={touched.email && errors.email}
 					/>
 					<Input
 						label="Password"
@@ -29,7 +42,7 @@ export const LoginForm = () => {
 						onChangeText={handleChange('password')}
 						onBlur={handleBlur('password')}
 						value={values.password}
-						error={errors.password}
+						error={touched.password && errors.password}
 					/>
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 						<Checkbox label="Hesabı xatırla" onChange={value => setFieldValue('remember', value)} />

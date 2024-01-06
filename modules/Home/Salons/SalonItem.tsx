@@ -1,8 +1,8 @@
-import AntDesign from '@expo/vector-icons/AntDesign'
 import { View, Image, Text, Separator } from '@lindo/components'
 import { Color } from '@lindo/constants'
 import { useThemeColor } from '@lindo/hooks'
 import type { BeautySalonView } from '@lindo/types'
+import { MapPin } from '@nandorojo/heroicons/24/outline'
 import type { FC } from 'react'
 import { StyleSheet } from 'react-native'
 
@@ -11,7 +11,7 @@ type SalonItemProps = {
 }
 
 export const SalonItem: FC<SalonItemProps> = ({ salon }) => {
-	const color = useThemeColor({}, 'separator')
+	const color = useThemeColor({}, 'textTertiary')
 
 	return (
 		<View style={styles.container}>
@@ -27,7 +27,7 @@ export const SalonItem: FC<SalonItemProps> = ({ salon }) => {
 			</View>
 			<Separator bg={Color.black[100]} mV={4} />
 			<View style={styles.address}>
-				<AntDesign name="pushpino" size={12} color={color} />
+				<MapPin color={color} width={14} height={14} />
 				<Text
 					style={styles.addressText}
 					color="textTertiary"

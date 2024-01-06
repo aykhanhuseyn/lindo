@@ -1,6 +1,6 @@
-import { AntDesign } from '@expo/vector-icons'
 import { Color } from '@lindo/constants'
 import { useThemeColor } from '@lindo/hooks'
+import { Eye, EyeSlash } from '@nandorojo/heroicons/24/outline'
 import { useState, type FC, type ReactNode } from 'react'
 import { View, Text, TextInput, type TextInputProps, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -24,7 +24,7 @@ export const Input: FC<InputProps> = ({
 	...props
 }) => {
 	const [open, setOpen] = useState(false)
-	const isPasswordInpot = textContentType === 'password' || textContentType === 'newPassword'
+	const isPasswordInput = textContentType === 'password' || textContentType === 'newPassword'
 
 	const text = useThemeColor({}, 'text')
 	const errorColor = useThemeColor({}, 'error')
@@ -46,18 +46,22 @@ export const Input: FC<InputProps> = ({
 						style,
 						{
 							color: error ? errorColor : text,
-							paddingRight: isPasswordInpot || addonAfter ? 40 : undefined
+							paddingRight: isPasswordInput || addonAfter ? 40 : undefined
 						}
 					]}
 					textContentType={textContentType}
-					secureTextEntry={isPasswordInpot && !open}
+					secureTextEntry={isPasswordInput && !open}
 					{...props}
 				/>
 
-				{isPasswordInpot ? (
+				{isPasswordInput ? (
 					<View style={styles.addonAfter}>
 						<TouchableOpacity onPress={() => setOpen(o => !o)}>
-							<AntDesign name={open ? 'eye' : 'eyeo'} size={24} color={Color.cyan[200]} />
+							{open ? (
+								<Eye color={Color.daintree[700]} fontSize={24} />
+							) : (
+								<EyeSlash color={Color.daintree[700]} fontSize={24} />
+							)}
 						</TouchableOpacity>
 					</View>
 				) : (

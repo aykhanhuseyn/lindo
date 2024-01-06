@@ -1,5 +1,5 @@
-import AntDesign from '@expo/vector-icons/AntDesign'
 import { Color } from '@lindo/constants'
+import { Home, Calendar, Heart, User, ExclamationTriangle } from '@nandorojo/heroicons/24/outline'
 import type { BottomTabBarProps } from '@react-navigation/bottom-tabs'
 import { type FC, useEffect } from 'react'
 import { Animated, Easing, StyleSheet, useAnimatedValue } from 'react-native'
@@ -13,7 +13,7 @@ interface TabButtonProps extends BottomTabBarProps {
 
 export const TabButton: FC<TabButtonProps> = ({ state, route, index, descriptors, navigation }) => {
 	const { options } = descriptors[route.key]
-	const iconName = getIconName(route.name as TabRoutes)
+	const Icon = getIcon(route.name as TabRoutes)
 	const isFocused = state.index === index
 	const opacity = useAnimatedValue(0)
 	const scale = useAnimatedValue(0)
@@ -76,7 +76,7 @@ export const TabButton: FC<TabButtonProps> = ({ state, route, index, descriptors
 	return (
 		<TouchableOpacity key={options.title} onPress={onPress} style={styles.tab}>
 			<Animated.View style={[styles.tabIcon, { transform: [{ scale }, { translateY }] }]}>
-				<AntDesign name={iconName} size={24} color={isFocused ? 'white' : 'grey'} />
+				<Icon color={isFocused ? '#fff' : '#ffffffb0'} fontSize={24} />
 			</Animated.View>
 			<Animated.View style={{ opacity, transform: [{ translateY }] }}>
 				<Text style={styles.tabLabel}>{options.title}</Text>
@@ -88,18 +88,18 @@ export const TabButton: FC<TabButtonProps> = ({ state, route, index, descriptors
 type TabRoutes = 'index' | 'appointments' | 'favorites' | 'profile'
 type Route = BottomTabBarProps['state']['routes'][number]
 
-const getIconName = (label: TabRoutes) => {
+const getIcon = (label: TabRoutes) => {
 	switch (label) {
 		case 'index':
-			return 'home'
+			return Home
 		case 'appointments':
-			return 'calendar'
+			return Calendar
 		case 'favorites':
-			return 'hearto'
+			return Heart
 		case 'profile':
-			return 'profile'
+			return User
 		default:
-			return 'ellipsis1'
+			return ExclamationTriangle
 	}
 }
 
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
 		justifyContent: 'center'
 	},
 	tabIcon: {
-		backgroundColor: Color.cyan[800],
+		backgroundColor: Color.daintree[950],
 		borderRadius: 40,
 		padding: 16,
 		paddingBottom: 8

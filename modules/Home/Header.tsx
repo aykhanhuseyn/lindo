@@ -9,8 +9,8 @@ export const Header = () => {
 			<NameCard />
 
 			<View style={styles.action}>
-				<IconButton name="search1" onPress={() => console.log('press')} />
-				<IconButton name="notification" />
+				<IconButton name="MagnifyingGlass" onPress={() => console.log('press')} />
+				<IconButton name="Bell" />
 			</View>
 		</View>
 	)

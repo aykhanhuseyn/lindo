@@ -1,8 +1,8 @@
-import { AntDesign } from '@expo/vector-icons'
 import { View, Image, Text } from '@lindo/components'
 import { Color } from '@lindo/constants'
 import { useThemeColor } from '@lindo/hooks'
 import type { StylistView } from '@lindo/types'
+import { Star } from '@nandorojo/heroicons/24/outline'
 import type { FC } from 'react'
 import { StyleSheet } from 'react-native'
 
@@ -11,9 +11,12 @@ type StylistsItemProps = {
 }
 
 export const StylistsItem: FC<StylistsItemProps> = ({ stylist }) => {
+	const color = useThemeColor({}, 'textTertiary')
 	const borderColor = useThemeColor({}, 'border')
+	const backgroundColor = useThemeColor({}, 'backgroundSecondary')
+
 	return (
-		<View style={[styles.card, { borderColor }]} mode="secondary">
+		<View style={[styles.card, { borderColor, backgroundColor }]} mode="secondary">
 			<Image style={styles.image} source={{ uri: stylist.image }} />
 			<View>
 				<Text style={styles.title} color="text">
@@ -23,7 +26,7 @@ export const StylistsItem: FC<StylistsItemProps> = ({ stylist }) => {
 					{stylist.profession} | {stylist.entityName}
 				</Text>
 				<View style={styles.rating}>
-					<AntDesign name="staro" size={12} color={Color.black[300]} />
+					<Star color={color} width={16} height={16} />
 					<Text style={styles.ratingText} color="textTertiary">
 						{stylist.rating} ratings | {stylist.ratingCount} reviews
 					</Text>
@@ -35,7 +38,6 @@ export const StylistsItem: FC<StylistsItemProps> = ({ stylist }) => {
 
 const styles = StyleSheet.create({
 	card: {
-		backgroundColor: '#F9F8F7',
 		borderRadius: 12,
 		borderWidth: 1,
 		paddingVertical: 8,
