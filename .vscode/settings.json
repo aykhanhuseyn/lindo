@@ -4,4 +4,10 @@
   },
   "editor.formatOnSave": false,
   "typescript.tsdk": "node_modules/typescript/lib",
+  "cSpell.words": [
+    "daintree",
+    "grotesk",
+    "heroicons",
+    "lindo"
+  ],
 } 
