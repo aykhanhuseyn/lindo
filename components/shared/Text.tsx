@@ -1,13 +1,15 @@
 import { LindoTheme } from '@lindo/constants'
 import { useThemeColor } from '@lindo/hooks'
 import type { ThemeProps } from '@lindo/types'
-import { Text as DefaultText, type TextProps as DefaultTextProps } from 'react-native'
+import { Text as NativeText, type TextProps as NativeTextProps } from 'react-native'
+import Animated from 'react-native-reanimated'
 
 export type TextMode = 'display' | 'display2' | 'text' | 'text2' | 'text3' | 'mono'
 
-export interface TextProps extends ThemeProps, DefaultTextProps {
+export interface TextProps extends ThemeProps, NativeTextProps {
 	mode?: TextMode
 	color?: keyof LindoTheme
+	animated?: boolean
 }
 
 const modeToFontFamily = {
@@ -16,7 +18,7 @@ const modeToFontFamily = {
 	mono: 'SpaceGrotesk_300Light'
 } as const
 
-const modeToStyles: Record<TextMode, DefaultTextProps['style']> = {
+const modeToStyles: Record<TextMode, NativeTextProps['style']> = {
 	display: {
 		fontSize: 20,
 		fontWeight: '700',
@@ -60,12 +62,22 @@ const modeToColor: Record<TextMode, keyof LindoTheme> = {
 }
 
 export function Text(props: TextProps) {
-	const { style, lightColor, darkColor, color: colorKey, mode = 'text', ...otherProps } = props
+	const {
+		animated,
+		style,
+		lightColor,
+		darkColor,
+		color: colorKey,
+		mode = 'text',
+		...otherProps
+	} = props
 
 	const colorProp = colorKey ?? modeToColor[mode]
 	const color = useThemeColor({ light: lightColor, dark: darkColor }, colorProp)
 
 	const modeStyles = modeToStyles[mode]
 
-	return <DefaultText style={[{ color }, modeStyles, style]} {...otherProps} />
+	if (animated) return <Animated.Text style={[{ color }, modeStyles, style]} {...otherProps} />
+
+	return <NativeText style={[{ color }, modeStyles, style]} {...otherProps} />
 }
