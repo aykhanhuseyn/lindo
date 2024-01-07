@@ -1,16 +1,8 @@
 import { Color } from '@lindo/constants'
 import * as HeroIcon from '@nandorojo/heroicons/24/outline'
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics'
+import { useEffect, forwardRef, type FC, type ReactElement, type ForwardedRef } from 'react'
 import {
-	useEffect,
-	forwardRef,
-	type FC,
-	type ReactElement,
-	type ForwardedRef,
-	type CSSProperties
-} from 'react'
-import {
-	Animated,
-	Easing,
 	Pressable,
 	StyleSheet,
 	View,
@@ -19,6 +11,15 @@ import {
 	type ViewStyle,
 	type GestureResponderEvent
 } from 'react-native'
+import Animated, {
+	cancelAnimation,
+	Easing,
+	useSharedValue,
+	withRepeat,
+	withTiming,
+	interpolate,
+	useAnimatedStyle
+} from 'react-native-reanimated'
 
 import { Text } from './Text'
 
@@ -31,6 +32,7 @@ export interface ButtonProps {
 	textStyle?: TextProps['style']
 	isDisabled?: boolean
 	isLoading?: boolean
+	haptics?: `${ImpactFeedbackStyle}`
 }
 
 export const Button = forwardRef(
@@ -43,43 +45,49 @@ export const Button = forwardRef(
 			style,
 			textStyle,
 			isDisabled = false,
-			isLoading = false
+			isLoading = false,
+			haptics = 'medium'
 		}: ButtonProps,
 		ref: ForwardedRef<View>
 	) => {
-		const spinValue = new Animated.Value(0)
 		const isIconButton = typeof title === 'object'
+		const spin = useSharedValue(0)
+		const rotate = useAnimatedStyle(() => {
+			return {
+				transform: [{ rotate: `${interpolate(spin.value, [0, 1], [0, 360])}deg` }]
+			}
+		})
 
 		useEffect(() => {
 			if (isLoading) {
-				Animated.loop(
-					Animated.timing(spinValue, {
-						toValue: 1,
+				spin.value = withRepeat(
+					withTiming(1, {
 						duration: 1500,
-						useNativeDriver: true,
 						easing: Easing.linear
-					})
-				).start()
+					}),
+					-1,
+					false
+				)
 			} else {
-				spinValue.stopAnimation()
-				spinValue.setValue(0)
+				cancelAnimation(spin)
 			}
 			return () => {
-				spinValue.stopAnimation()
-				spinValue.setValue(0)
+				cancelAnimation(spin)
 			}
 		}, [isLoading])
-
-		const spin = spinValue.interpolate({
-			inputRange: [0, 1],
-			outputRange: ['0deg', '360deg']
-		})
 
 		return (
 			<Pressable
 				ref={ref}
 				disabled={isLoading || isDisabled}
-				onPress={(event: GestureResponderEvent) => onPress?.(event)}
+				onPress={(event: GestureResponderEvent) => {
+					if (onPress) {
+						if (haptics) {
+							impactAsync(haptics as ImpactFeedbackStyle)
+						}
+						onPress(event)
+					}
+				}}
 				style={{
 					width: block ? '100%' : 'auto'
 				}}>
@@ -128,7 +136,7 @@ export const Button = forwardRef(
 								title
 							)
 						) : (
-							<Animated.View style={isLoading && { transform: [{ rotate: spin }] }}>
+							<Animated.View style={rotate}>
 								<HeroIcon.ArrowPath
 									color={
 										mode === 'filled'

@@ -1,6 +1,7 @@
 import { Color } from '@lindo/constants'
 import { useThemeColor } from '@lindo/hooks'
 import { Eye, EyeSlash } from '@nandorojo/heroicons/24/outline'
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics'
 import { useState, type FC, type ReactNode } from 'react'
 import { View, Text, TextInput, type TextInputProps, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
@@ -18,6 +19,7 @@ export const Input: FC<InputProps> = ({
 	error,
 	helper,
 	style,
+	onFocus,
 	textContentType,
 	addonAfter,
 	secureTextEntry,
@@ -41,6 +43,10 @@ export const Input: FC<InputProps> = ({
 				]}>
 				<TextInput
 					autoCapitalize="none"
+					onFocus={event => {
+						onFocus && onFocus(event)
+						impactAsync(ImpactFeedbackStyle.Medium)
+					}}
 					style={[
 						styles.input,
 						style,

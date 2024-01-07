@@ -1,8 +1,10 @@
 import { Color } from '@lindo/constants'
 import { useThemeColor } from '@lindo/hooks'
 import { Check } from '@nandorojo/heroicons/24/outline'
+import { impactAsync, ImpactFeedbackStyle } from 'expo-haptics'
 import { useState, useEffect, type FC, type ReactNode } from 'react'
 import { View, Text, ViewProps, StyleSheet, TouchableOpacity } from 'react-native'
+import Animated, { useSharedValue, withTiming } from 'react-native-reanimated'
 
 interface CheckboxProps extends ViewProps {
 	label?: ReactNode
@@ -19,9 +21,12 @@ export const Checkbox: FC<CheckboxProps> = ({
 	onChange,
 	...props
 }) => {
+	const opacity = useSharedValue(0)
 	const [checked, setChecked] = useState(false)
 
 	useEffect(() => {
+		opacity.value = withTiming(checked ? 1 : 0, { duration: 100 })
+		impactAsync(ImpactFeedbackStyle.Medium)
 		onChange && onChange(checked)
 	}, [checked])
 
@@ -32,17 +37,34 @@ export const Checkbox: FC<CheckboxProps> = ({
 
 	return (
 		<View style={[styles.wrapper, style]} {...props}>
-			<TouchableOpacity onPress={() => setChecked(check => !check)}>
+			<TouchableOpacity
+				onPress={() => {
+					setChecked(check => !check)
+				}}>
 				<View style={styles.checkboxWrapper}>
 					<View style={[styles.checkboxBox, { borderColor: error ? errorColor : border }]}>
-						{checked && (
+						<Animated.View
+							style={[
+								{
+									transform: [
+										{
+											translateX: -9
+										},
+										{
+											translateY: -9
+										}
+									],
+									opacity
+								}
+								// { opacity }
+							]}>
 							<Check
 								width={18}
 								height={18}
 								color={error ? errorColor : textSecondary}
 								style={styles.checkboxCheck}
 							/>
-						)}
+						</Animated.View>
 					</View>
 
 					{typeof label === 'string' ? (
