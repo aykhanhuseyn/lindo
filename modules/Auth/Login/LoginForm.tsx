@@ -13,7 +13,6 @@ export const LoginForm = () => {
 			validationSchema={validationSchema}
 			validateOnBlur
 			validateOnChange
-			isInitialValid
 			validateOnMount={false}>
 			{({
 				handleChange,
