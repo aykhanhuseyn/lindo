@@ -14,7 +14,8 @@ module.exports = function (api) {
 						'@lindo': './'
 					}
 				}
-			]
+			],
+			'react-native-reanimated/plugin'
 		]
 	}
 }
