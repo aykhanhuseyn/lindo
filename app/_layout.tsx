@@ -46,7 +46,6 @@ export default function RootLayout() {
 
 function RootNavigation() {
 	const colorScheme = useColorScheme()
-	// const background = theme[colorScheme ?? 'light'].colors.background
 
 	return (
 		<ThemeProvider value={colorScheme === 'dark' ? theme.dark : theme.light}>
