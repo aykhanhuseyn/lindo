@@ -56,6 +56,7 @@ export const Input: FC<InputProps> = ({
 						}
 					]}
 					textContentType={textContentType}
+					placeholderTextColor={textSecondary}
 					secureTextEntry={isPasswordInput && !open}
 					{...props}
 				/>
@@ -64,9 +65,9 @@ export const Input: FC<InputProps> = ({
 					<View style={styles.addonAfter}>
 						<TouchableOpacity onPress={() => setOpen(o => !o)}>
 							{open ? (
-								<Eye color={Color.daintree[700]} fontSize={24} />
+								<Eye color={Color.daintree[900]} fontSize={24} />
 							) : (
-								<EyeSlash color={Color.daintree[700]} fontSize={24} />
+								<EyeSlash color={Color.daintree[900]} fontSize={24} />
 							)}
 						</TouchableOpacity>
 					</View>

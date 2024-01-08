@@ -45,7 +45,7 @@ export const LoginForm = () => {
 					/>
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
 						<Checkbox label="Hesabı xatırla" onChange={value => setFieldValue('remember', value)} />
-						<Link href="/(auth)/register">
+						<Link href="/(auth)/register" asChild>
 							<Text>Hesabı unutmusunuz?</Text>
 						</Link>
 					</View>

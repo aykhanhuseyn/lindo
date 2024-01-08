@@ -1,7 +1,7 @@
-import { Text, View, FlatList, Container } from '@lindo/components'
+import { Text, FlatList, Container } from '@lindo/components'
 import { LoginForm } from '@lindo/modules/Auth'
 import { useCallback, useState } from 'react'
-import { RefreshControl, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native'
+import { RefreshControl, StyleSheet } from 'react-native'
 
 export default function Login() {
 	const [refreshing, setRefreshing] = useState(false)
@@ -14,20 +14,16 @@ export default function Login() {
 	}, [])
 
 	return (
-		<Container withHeader>
+		<Container>
 			<FlatList
 				refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
 				data={[
 					() => (
-						<View style={styles.container}>
-							<View style={styles.wrapper}>
-								<Text color="title" style={styles.title}>
-									Lindaya xoş gəldin!
-								</Text>
-								<LoginForm />
-							</View>
-						</View>
-					)
+						<Text color="title" style={styles.title}>
+							Lindaya xoş gəldin!
+						</Text>
+					),
+					() => <LoginForm />
 				]}
 				renderItem={({ item: Component, index }) => <Component key={index} />}
 				style={{ paddingBottom: 20, height: '100%' }}
